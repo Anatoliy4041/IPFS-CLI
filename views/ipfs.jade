@@ -1,0 +1,12 @@
+extends layout_res
+
+block content
+    h1= title
+    p Welcome to Anatoliy's first front project. #{title}
+
+    input(action="/ipfs/upload", type='button', value='Submit', onclick='checkAnswer()', class='inputField')
+    form(action="/ipfs/upload", method="post", enctype="multipart/form-data")
+        button.btn.btn-default
+            span.glyphicon.glyphicon-import
+            span &nbsp;Upload
+        input(type="file", name="fileToUpload")

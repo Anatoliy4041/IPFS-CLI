@@ -1,0 +1,10 @@
+extends layout_res
+
+block content
+  h1= title
+  p Welcome to Anatoliy's first front project. #{title}
+  p IPFS info:
+    .line &nbsp remote IP address: #{config.host}:#{config.port}
+    .line &nbsp nodeID: #{nodeInfo.id}
+    .line &nbsp agentVersion: #{nodeInfo.agentVersion}
+    .line &nbsp version: #{nodeInfo.protocolVersion}

@@ -1,0 +1,74 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        // The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags
+        meta(name='description', content='IPFS-CLI')
+        meta(name='author', content='Anatoliy Konstantinov')
+        link(rel='icon', href='/images/favicon.ico')
+        title IPFS-CLI
+        // Bootstrap core CSS
+        link(href='/stylesheets/bootstrap.min.css', rel='stylesheet')
+        link(href='/stylesheets/jumbotron.css', rel='stylesheet')
+        //script(src='../../assets/js/ie-emulation-modes-warning.js')
+    body
+        nav.navbar.navbar-inverse.navbar-fixed-top
+            .container
+                .navbar-header
+                    button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+                        span.sr-only Toggle navigation
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                    a.navbar-brand(href='/') IPFS client
+                #navbar.navbar-collapse.collapse
+                    form.navbar-form.navbar-right.form-group(action="/ipfs/download" style="display: inline" method="POST" enctype="multipart/form-data")
+                        input.form-control(name="pathToDownload" type='text', placeholder='ipfs path')
+                        button.btn.btn-success(type='submit') Search
+                // /.navbar-collapse
+        // Main jumbotron for a primary marketing message or call to action
+        .jumbotron
+            .container
+                p
+                    | Node info:
+                    .line remote IP address: #{config.host}:#{config.port}
+                    .line nodeID: #{nodeInfo.id}
+                    .line agentVersion: #{nodeInfo.agentVersion}
+                    .line version: #{nodeInfo.protocolVersion}
+        .container
+            // Example row of columns
+            .row
+                .col-md-4
+                    div.row
+                        form(action="/ipfs/upload" style="display: inline" method="POST" enctype="multipart/form-data")
+                            button.btn.btn-default(href='#', role='button') Upload
+                            input(name="fileToUpload" type="file" placeholder="Файл" style="margin: 3px; display: inline; width: auto !important").form-control
+                    div.clearfix
+            hr
+            footer
+                p © 2017 Sberbank Technology, Inc.
+
+
+
+
+        // /container
+        //
+          Bootstrap core JavaScript
+          ==================================================
+        // Placed at the end of the document so the pages load faster
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+        script.
+            window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\\/script>')
+        script(src='/javascripts/bootstrap.min.js')
+        // IE10 viewport hack for Surface/desktop Windows 8 bug
+        // script(src='../../assets/js/ie10-viewport-bug-workaround.js')
+// form(action="/ipfs/upload", method="post", enctype="multipart/form-data")
+    button.btn.btn-default
+        span.glyphicon.glyphicon-import
+        span &nbsp;Upload
+    input(type="file", name="fileToUpload")
+
+
+//(action="/ipfs/download" style="display: inline" method="POST" enctype="multipart/form-data")

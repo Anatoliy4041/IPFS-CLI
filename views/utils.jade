@@ -1,0 +1,48 @@
+//Created by baryshnikov on 30.01.17.
+
+mixin serverInfo
+    small
+        span Сервер #{context.web3.currentProvider.host}
+        span &nbsp;|&nbsp;
+        span Блоков #{context.web3.eth.blockNumber}
+        span &nbsp;|&nbsp;
+        span= context.moment().format('LLLL')
+
+
+mixin stateName(state)
+    if state === "banned"
+        span Мошенник
+    else if state === "trusted"
+        span Доверенный
+    else if state === "wrong-data"
+        span Ошибочные данные
+    else if state === "deleted"
+        span Удален
+    else if state === "not-initialized"
+        span Данных нет
+    else if state === "outdated"
+        span Данные устарели
+    else
+        span= state
+
+mixin ethLogo
+    div(style="padding: 10px; position: fixed; bottom: 0")
+        div(style="border: none;border-radius: 26px; background: url(/images/eth.gif) no-repeat center; background-size: contain;")
+            img(src="/images/eth.gif" style="width: 100%; visibility: hidden; max-width: 130px")
+
+mixin kv(k, v)
+    dt
+        span= k
+    dd
+        span= v
+mixin kvp(k, v)
+    dt
+        span= k
+    dd
+        pre= v
+
+mixin ku(k)
+    dt
+        span= k
+    dd
+        block

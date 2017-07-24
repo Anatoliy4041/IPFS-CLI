@@ -1,0 +1,28 @@
+extends layout_res
+
+block content
+  h1= title
+  p Welcome to Anatoliy's first front project. #{title}
+  p IPFS info:
+    .line &nbsp nodeID: #{nodeInfo.id}
+    .line &nbsp agentVersion: #{nodeInfo.agentVersion}
+    .line &nbsp version: #{nodeInfo.protocolVersion}
+
+
+
+
+
+
+      extends layout_res
+
+      block content
+        h1= title
+        p Welcome to Anatoliy's first front project. #{title}
+        a(href="/ipfs/download" style="margin: 3px; display: inline" ).btn.btn-success
+          span.glyphicon.glyphicon-download
+          span &nbsp;Download
+        form(action="/ipfs/upload", method="post", enctype="multipart/form-data")
+          button.btn.btn-default
+            span.glyphicon.glyphicon-import
+            span &nbsp;Upload
+          input(type="file", name="fileToUpload")
