@@ -1,11 +1,3 @@
-/**
- * Collection of contracts for information stores
- *
- * Copyright Sberbank Technology 2017
- *
- * @author Baryshnikov Alexander <dev@baryshnikov.net>
- *
- */
 pragma solidity ^0.4.13;
 
 
