@@ -31,12 +31,22 @@ html(lang='en')
         // Main jumbotron for a primary marketing message or call to action
         .jumbotron
             .container
-                p
-                    | Node info:
-                    .line remote IP address: #{config.host}:#{config.port}
-                    .line nodeID: #{nodeInfo.id}
-                    .line agentVersion: #{nodeInfo.agentVersion}
-                    .line version: #{nodeInfo.protocolVersion}
+                .row
+                    .col-md-5
+                        p
+                            | Geth node info:
+                            .line geth provider: #{config.gethProvider}
+                            .line version: #{info.gethNodeInfo.version.node}
+                            .line coinbase: #{info.gethNodeInfo.coinbase}
+                            .line networkID: #{info.gethNodeInfo.network}
+                    .col-md-5
+                        p
+                            | IPFS node info:
+                            .line remote IP address: #{config.host}:#{config.port}
+                            .line nodeID: #{info.ipfsNodeInfo.id}
+                            .line agentVersion: #{info.ipfsNodeInfo.version.agentVersion}
+                            .line version: #{info.ipfsNodeInfo.version.protocolVersion}
+
         .container
             // Example row of columns
             .row
@@ -45,6 +55,11 @@ html(lang='en')
                         form(action="/ipfs/upload" style="display: inline" method="POST" enctype="multipart/form-data")
                             button.btn.btn-default(href='#', role='button') Upload
                             input(name="fileToUpload" type="file" placeholder="Файл" style="margin: 3px; display: inline; width: auto !important").form-control
+                    div.clearfix
+                .col-md-4
+                    div.row
+                        form(action="/ipfs/deploy" style="display: inline" method="get")
+                            button.btn.btn-default(href='#', role='button') Deploy contract
                     div.clearfix
             hr
             footer
